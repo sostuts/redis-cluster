@@ -17,13 +17,14 @@ RUN cp /redis-3.2.5/src/redis-trib.rb /usr/local/bin
 WORKDIR /
 
 # 下载安装gem
-RUN wget http://cache.ruby-lang.org/pub/ruby/2.2/ruby-2.2.2.tar.gz  
-RUN tar xzf /ruby-2.2.2.tar.gz && cd ruby-2.2.2 && ./configure --prefix=/usr/local/ruby-2.2.2 && make && make install
+RUN wget https://cache.ruby-lang.org/pub/ruby/2.3/ruby-2.3.1.tar.gz
+RUN tar xzf /ruby-2.3.1.tar.gz && cd ruby-2.3.1 && ./configure --prefix=/usr/local/ruby-2.3.1 && make && make install
+RUN cp /usr/local/ruby-2.3.1/bin/* /usr/local/bin/
 
 WORKDIR /
 
 # gem
-RUN /usr/local/ruby-2.2.2/bin/gem install redis
+RUN /usr/local/ruby-2.3.1/bin/gem install redis
 
 # 添加redis配置
 ADD ./redis.conf /redis.conf
