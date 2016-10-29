@@ -27,7 +27,9 @@ WORKDIR /
 RUN /usr/local/ruby-2.3.1/bin/gem install redis
 
 # 添加redis配置
-ADD ./redis.conf /redis.conf
+COPY ./redis.conf /redis.conf
+COPY ./start.sh /start.sh
+
 
 # 运行redis
-CMD ["/redis-3.2.5/src/redis-server", "/redis.conf"]
+CMD ["/start.sh"]
