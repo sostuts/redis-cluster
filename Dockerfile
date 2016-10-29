@@ -29,6 +29,7 @@ RUN /usr/local/ruby-2.3.1/bin/gem install redis
 # 添加redis配置
 COPY ./redis.conf /redis.conf
 COPY ./start.sh /start.sh
+RUN chmod a+x /start.sh
 
 
 # 运行redis
